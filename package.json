@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/amita": "^5.1.0",
     "@heroicons/react": "^2.1.5",
     "@nextui-org/react": "^2.4.8",
     "chart.js": "^4.4.5",

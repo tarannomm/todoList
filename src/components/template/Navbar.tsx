@@ -38,18 +38,18 @@ export default function Menu() {
     <div className="duration-300">
        <div
         className={`${
-          isMenuOpen ? "w-[200px]" : "w-[90px]"
+          (isMenuOpen || hamburgerMenu) ? "w-[200px]" : "w-[90px]"
         }  md:bg-purple-700 md:h-screen ${hamburgerMenu?"h-screen bg-purple-700":"h[100px] bg-transparent"} pt-7 relative duration-300 text-center`}
       > 
        
-       <div className="absolute top-6 left-3 md:hidden duration-400" onClick={()=>setHamburgerMenu(!hamburgerMenu)}>
+       <div className="absolute top-1 left-3 md:hidden duration-400" onClick={()=>setHamburgerMenu(!hamburgerMenu)}>
         {hamburgerMenu?
-        <MdMenuOpen className="mx-auto" size={40}/>
+        <MdMenuOpen className="mx-auto text-white" size={40} />
          :
         <IoMdMenu  className="mx-auto" size={40} />
       }
        </div>
-       <div className={ `duration-300 transform ${!hamburgerMenu?"-translate-x-96":""} md:translate-x-0 `}>
+       <div className={ `h-full duration-300 transform ${!hamburgerMenu?"-translate-x-96":""} md:translate-x-0 `}>
         <img
           src={isMenuOpen? rightArrow : leftArrow}
           className={`absolute cursor-pointer -right-3 top-16 w-8 h-8 p-2 bg-white  rounded-full shodow-md duration-400 hidden md:block`}
@@ -57,15 +57,15 @@ export default function Menu() {
           alt="open"
         />
           <h1
-            className={`text-white origin-left font-medium text-xl duration-500`}
+            className={`font-amita text-white origin-left font-medium text-xl duration-500`}
           >
           Drop
           </h1>
-        <ul className="pt-6 mt-10">
+        <ul className="pt-6 mt-10 h-[90%]">
           {menuItems.map((menu, index) => (
             <li
               key={index}
-              className={`flex px-7  my-8 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center ${menu.gap? "absolute bottom-0":"" } ${menu.title==selectedMenu ? "border-l-4 border-white rounded-l-sm":""}`}
+              className={`flex px-7  my-8 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center ${menu.gap? "fixed bottom-0 mt-auto":"" } ${menu.title==selectedMenu ? "border-l-4 border-white rounded-l-sm":""}`}
               onClick={() => setSelectedmenu(menu.title)}
             >
               <img className={`w-6 mr-4`} src={menu.src} alt={menu.title} />
