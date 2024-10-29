@@ -1,0 +1,20 @@
+export const meetingDates=[
+    {
+        id:1,
+        date:"1402/12/07",
+        time:"8:00",
+        day:"sunday"
+    },
+    {
+        id:2,
+        date:"1402/12/07",
+        time:"9:00",
+        day:"monday"
+    },
+    {
+        id:1,
+        date:"1402/12/07",
+        time:"10:00",
+        day:"yeusday"
+    },
+]

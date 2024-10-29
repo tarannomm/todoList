@@ -1,0 +1,17 @@
+.custom-label label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .custom-label input:focus ~ label,
+  .custom-label input:not(:placeholder-shown) ~ label {
+    top: -8px;
+    left: 8px;
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  

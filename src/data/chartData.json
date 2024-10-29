@@ -1,0 +1,28 @@
+[
+    {
+      "name": "Monday",
+      "deposit": 24000,
+      "Withdrawal": 4000
+    },
+    {
+      "name": "Tuesday",
+      "deposit": 18000,
+      "Withdrawal": 1000
+    },
+    {
+      "name": "Wednesday",
+      "deposit": 14000,
+      "Withdrawal": 5000
+    },
+    {
+      "name": "Thursday",
+      "deposit": 16000,
+      "Withdrawal": 13000
+    },
+    {
+      "name": "Friday",
+      "deposit": 10000,
+      "Withdrawal": 6000
+    }
+  ]
+  
