@@ -19,8 +19,10 @@ const Profile = () => {
         {title:"Review time of request",date:"mar 7 at 8:00 pm",icon:time},
 
     ]
+
     const[openAddModal,setOpenAddModal] = useState<boolean>(false)
     return (
+        <>        
         <div className='flex flex-col gap-4 w-[303px] h-fit bg-white rounded-3xl px-4 py-6  mt-[95px] '>
             <div className='flex justify-around items-center'>
                 {items.map(item=>
@@ -70,10 +72,10 @@ const Profile = () => {
 
                 </div>
             </div>
-            <AddToDoModal open={openAddModal} setopen={setOpenAddModal}/>
+        </div> 
+         <AddToDoModal open={openAddModal} setopen={setOpenAddModal}/>
+        </>
 
-            
-        </div>
     );
 };
 

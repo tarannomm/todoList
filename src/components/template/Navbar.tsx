@@ -37,9 +37,11 @@ export default function Menu() {
   return (
     <div className="duration-300">
        <div
-        className={`${
-          (isMenuOpen || hamburgerMenu) ? "w-[200px]" : "w-[90px]"
-        }  md:bg-purple-700 md:h-screen ${hamburgerMenu?"h-screen bg-purple-700":"h[100px] bg-transparent"} pt-7 relative duration-300 text-center`}
+        className={`
+        ${
+          hamburgerMenu? `w-[200px]`: isMenuOpen? "w-[200px]":"w[90px]"
+        } 
+       md:bg-purple-700 md:h-screen ${hamburgerMenu?"h-screen bg-purple-700":"h[100px] bg-transparent"} pt-7 relative duration-300 text-center`}
       > 
        
        <div className="absolute top-1 left-3 md:hidden duration-400" onClick={()=>setHamburgerMenu(!hamburgerMenu)}>

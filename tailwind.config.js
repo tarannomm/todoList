@@ -11,7 +11,8 @@ export default {
         'custom-dark': '0px 4px 8px -2px rgba(16, 24, 40, 0.1)',
       },
       fontFamily: {
-        amita: ['"Amita"', 'cursive'], 
+        'amita': ['"Amita"', 'cursive'], 
+        'josefin': ['"Josefin Sans"', 'sans-serif'],
       },
     }
   },
