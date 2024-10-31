@@ -1,11 +1,11 @@
 import React from 'react';
-import DashboardLayout from './layout/dashboardLayout';
 import Dashboard from './template/dashboard';
 import Profile from './template/Profile';
 import SearchDropDown from './modules/SearchDropDown';
 import { employees } from '../data/selectData';
+import DashboardLayout from './layout/dashboardLayout';
 
-// Define the structure for the employee option
+
 type EmployeeOption = {
   id: number;
   name: string;
