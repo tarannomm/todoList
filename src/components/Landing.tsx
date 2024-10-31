@@ -3,7 +3,7 @@ import Dashboard from './template/dashboard';
 import Profile from './template/Profile';
 import SearchDropDown from './modules/SearchDropDown';
 import { employees } from '../data/selectData';
-import DashboardLayout from './layout/dashboardLayout';
+import Menu from './template/Navbar';
 
 
 type EmployeeOption = {
@@ -15,8 +15,10 @@ type EmployeeOption = {
 
 const ToDoDashboard: React.FC = () => {
   return (
-    <div>
-      <DashboardLayout>
+
+       
+      <div className='bg-indigo-50 flex'>
+            <Menu />
         <div className='flex flex-grow h-screen overflow-y-auto flex-col items-center xl:items-start m-[2%]'>
           <div className='w-[200px] mt-[10px] xl:mt-0'>
             <SearchDropDown options={employees as EmployeeOption[]} />
@@ -26,8 +28,10 @@ const ToDoDashboard: React.FC = () => {
             <Dashboard />
           </div>
         </div>
-      </DashboardLayout>
-    </div>
+        </div>
+
+     
+
   );
 };
 
