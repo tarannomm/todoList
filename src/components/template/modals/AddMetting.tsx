@@ -75,9 +75,15 @@ const AddMeeting: React.FC<AddMeetingProps> = ({ open, setOpen }) => {
             setOpen(false);
         }
     };
+    const onCloseHandler=()=>{
+       setOpen(false);
+        setMeetingStep(1);
+        setError("");
+        setMeetingInfo({email:"",course:"",date:""})
+    }
 
     return (
-        <Modal backdrop="blur" isOpen={open} onClose={() => { setOpen(false); setMeetingStep(1); }} size='4xl' className='h-full xl:h-[470px]'>
+        <Modal backdrop="blur" isOpen={open} onClose={onCloseHandler} size='4xl' className='h-full xl:h-[470px]'>
             <ModalContent>
                 <ModalBody>
                     <div className='flex flex-col lg:flex-row items-center h-full'>
@@ -98,7 +104,7 @@ const AddMeeting: React.FC<AddMeetingProps> = ({ open, setOpen }) => {
                                     labelPlacement="outside"
                                     placeholder=' '
                                     radius={"sm"}
-                                    isInvalid={meetingInfo.email.length === 0 || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(meetingInfo.email)}
+                                    isInvalid={meetingInfo.email.length>0 && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(meetingInfo.email)}
                                     errorMessage="Email format not valid"
                                     value={meetingInfo.email}
                                     onChange={(e) => setMeetingInfo({ ...meetingInfo, email: e.target.value })}

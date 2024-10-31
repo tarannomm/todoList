@@ -2,15 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CheckIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { FaCaretDown } from "react-icons/fa";
 import { IoMdClose } from 'react-icons/io';
+import { ImageDropDownProps, Option } from '../../types/type';
 
-type Option = {
-  id: number;
-  name: string;
-  code: string;
-  avatar: string;
-}
 
-const ImageDropDown = ({ options, members, todo }) => {
+
+const ImageDropDown: React.FC<ImageDropDownProps> = ({ options, members, todo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<Option[]>([]);
   const [search, setSearch] = useState('');
