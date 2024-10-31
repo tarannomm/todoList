@@ -4,14 +4,5 @@
 @import "@fontsource/amita";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
- 
-
-
-html, body, label {
-  font-family: 'Roboto', sans-serif;
-}
-*{
-  color: #101828;
-  ;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
  

@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         'amita': ['"Amita"', 'cursive'], 
         'josefin': ['"Josefin Sans"', 'sans-serif'],
+         'roboto': ['Roboto', 'sans-serif'],
       },
     }
   },

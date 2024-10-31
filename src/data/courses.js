@@ -1,4 +1,4 @@
-export const cources=[
+export const courses=[
     {
         id:1,
         title:"Financial",

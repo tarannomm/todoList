@@ -1,33 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import { CheckIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown } from 'react-icons/fa';
 
 type Option = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 
-export default function SearchDropDown({ options }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [selected, setSelected] = useState<Option[]>([])
-  const [search, setSearch] = useState('')
-  const dropdownRef = useRef<HTMLDivElement | null>(null); 
+type SearchDropDownProps = {
+  options: Option[];
+};
+
+const SearchDropDown: React.FC<SearchDropDownProps> = ({ options }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<Option[]>([]);
+  const [search, setSearch] = useState('');
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const filteredOptions = options.filter(option =>
     option.name.toLowerCase().includes(search.toLowerCase())
-  )
+  );
 
   const toggleOption = (option: Option) => {
     setSelected(prev =>
       prev.some(item => item.id === option.id)
         ? prev.filter(item => item.id !== option.id)
         : [...prev, option]
-    )
-  }
+    );
+  };
 
   const clearSelected = () => {
-    setSelected([])
-  }
+    setSelected([]);
+  };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -43,18 +47,18 @@ export default function SearchDropDown({ options }) {
   }, []);
 
   return (
-    <div className={`w-full font-sans "ml-3"}`}>
+    <div className="w-full font-sans ml-3">
       <div className="relative" ref={dropdownRef}>
-        <span className='absolute -top-2 left-4 px-2 bg-indigo-50 text-xs'>Employees involved</span>
+        <span className="absolute -top-2 left-4 px-2 bg-indigo-50 text-xs">Employees involved</span>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full py-2 px-4 text-left bg-indigo-50 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500`}
+          className="w-full py-2 px-4 text-left bg-white border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
         >
           <span className="block text-gray-900">
             {selected.length > 0 ? `Selected: ${selected.length}` : 'Select'}
           </span>
           <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-            <FaCaretDown className="w-4 h-4 !text-gray-400 mx-2" aria-hidden="true" />
+            <FaCaretDown className="w-4 h-4 text-gray-400 mx-2" aria-hidden="true" />
           </span>
         </button>
 
@@ -84,7 +88,7 @@ export default function SearchDropDown({ options }) {
                     selected.some(item => item.id === option.id) ? 'bg-purple-600 border-purple-600' : 'border-gray-300'
                   }`}>
                     {selected.some(item => item.id === option.id) && (
-                      <CheckIcon className="w-10 h-10 !text-white" />
+                      <CheckIcon className="w-4 h-4 text-white" />
                     )}
                   </div>
                   {option.name}
@@ -110,5 +114,7 @@ export default function SearchDropDown({ options }) {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default SearchDropDown;

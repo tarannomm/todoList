@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Menu from '../template/Navbar';
- 
-const DashboardLayout = ({children}) => {
+
+interface DashboardLayoutProps {
+    children: ReactNode;
+}
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     return (
         <div className='bg-indigo-50 flex'>
-            <Menu/>
+            <Menu />
             {children}
         </div>
     );

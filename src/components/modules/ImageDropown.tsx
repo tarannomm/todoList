@@ -1,20 +1,20 @@
-import React, { useState ,useEffect,useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CheckIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { FaCaretDown } from "react-icons/fa";
 import { IoMdClose } from 'react-icons/io';
 
 type Option = {
-  id: number
-  name: string
-  code: string
-  avatar: string
+  id: number;
+  name: string;
+  code: string;
+  avatar: string;
 }
 
-export default function ImageDropDown({ options ,members,todo}) {
+const ImageDropDown = ({ options, members, todo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<Option[]>([]);
   const [search, setSearch] = useState('');
-  const dropdownRef = useRef<HTMLDivElement | null>(null); 
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const filteredOptions = options.filter(option =>
     option.name.toLowerCase().includes(search.toLowerCase())
@@ -26,7 +26,6 @@ export default function ImageDropDown({ options ,members,todo}) {
         ? prev.filter(item => item.id !== option.id)
         : [...prev, option]
     );
-     
   };
 
   const removeItem = (remove: Option) => {
@@ -37,6 +36,7 @@ export default function ImageDropDown({ options ,members,todo}) {
   const clearSelected = () => {
     setSelected([]);
   };
+
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsOpen(false);
@@ -50,9 +50,9 @@ export default function ImageDropDown({ options ,members,todo}) {
     };
   }, []);
 
-  useEffect(()=>{
-  members({...todo,users:selected})
-  },[selected])
+  useEffect(() => {
+    members(selected);
+  }, [selected]);
 
   return (
     <div className="w-full font-sans">
@@ -62,7 +62,7 @@ export default function ImageDropDown({ options ,members,todo}) {
         )}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full min-h-14  py-2 px-4 flex items-center justify-between text-left border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="w-full min-h-14 py-2 px-4 flex items-center justify-between text-left border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
         >
           <div className="flex flex-wrap text-gray-900">
             {selected.length > 0 ? selected.map(item => (
@@ -96,15 +96,15 @@ export default function ImageDropDown({ options ,members,todo}) {
               </div>
             </div>
 
-            <ul className=" max-h-60 h-60 mb-2 overflow-auto py-1">
-              {filteredOptions.map((option:Option) => (
+            <ul className="max-h-60 h-60 mb-2 overflow-auto py-1">
+              {filteredOptions.map((option: Option) => (
                 <li
-                key={option.id}
-                className={`flex gap-x-3 mb-1 items-center px-3 py-2 cursor-pointer hover:bg-purple-100 ${
-                  selected.some(item => item.id === option.id) ? 'bg-purple-50' : ''
-                }`}
-                onClick={() => toggleOption(option)}
-              >
+                  key={option.id}
+                  className={`flex gap-x-3 mb-1 items-center px-3 py-2 cursor-pointer hover:bg-purple-100 ${
+                    selected.some(item => item.id === option.id) ? 'bg-purple-50' : ''
+                  }`}
+                  onClick={() => toggleOption(option)}
+                >
                   <div className={`w-5 h-5 border rounded flex items-center justify-center ${
                     selected.some(item => item.id === option.id) ? 'bg-purple-600 border-purple-600' : 'border-gray-300'
                   }`}>
@@ -113,9 +113,7 @@ export default function ImageDropDown({ options ,members,todo}) {
                     )}
                   </div>
                   <img src={option.avatar} className="w-6 h-6 rounded-full" alt={option.name} />
-                  <span>
-                    {`${option.name} / ${option.code}`}
-                  </span>
+                  <span>{`${option.name} / ${option.code}`}</span>
                 </li>
               ))}
             </ul>
@@ -132,5 +130,7 @@ export default function ImageDropDown({ options ,members,todo}) {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default ImageDropDown;

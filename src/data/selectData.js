@@ -20,5 +20,13 @@ export const users=[
         { id: 6, name: 'Matin alipour',code:"0877",avatar:avatar3},
         { id: 7, name: 'Matin alipour',code:"0455",avatar:avatar1},
 ]
+export const initialMeeting=[
+        { profile: avatar1, user: "Livia Stanton", title: "Meeting scheduled", date: "1:24 PM" },
+        { profile: avatar2, user: "Allison Lipshutz", title: "update on marketing campaign", date: "12:14 PM" },
+        { profile: avatar3, user: "Martin Stanton", title: "Designly 2.0 is about to launch", date: "Dec 19 at 8:01 pm" },
+        { profile: avatar1, user: "Ann Philips", title: "My friend Julie loves Dapper!", date: "Dec 19 at 6:11 pm" },
+        { profile: avatar1, user: "Livia Stanton", title: "Meeting scheduled", date: "1:24 PM" },
+        { profile: avatar2, user: "Allison Lipshutz", title: "update on marketing campaign", date: "12:14 PM" },
+]
 
       

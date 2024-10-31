@@ -5,13 +5,14 @@ import working from "../../assets/cards/working.svg";
 import spending from "../../assets/cards/spending.svg";
 import CardSm from '../modules/CardSm';
 import CardMd from '../modules/CardMd';
-import { Button } from '@nextui-org/react';
+import { Button, avatar } from '@nextui-org/react';
 import MettingItems from '../modules/MettingItems';
 import Chart from '../modules/LineChart';
 import chartdata from "../../data/chartData.json";
 import AddMeeting from './modals/AddMetting';
-import EmpDropDown from '../modules/SearchDropDown';
-import { employees } from '../../data/selectData';
+import { initialMeeting } from '../../data/selectData';
+import { useSelector } from 'react-redux';
+import prof from "../../assets/avatars/avatar3.png"
 
 const Dashboard = () => {
     const [meetingModalOpen, setMeetingModalOpen] = useState(false);
@@ -28,40 +29,32 @@ const Dashboard = () => {
         { title: "Invoice overdue", amount: 6, percent: 2.7, positive: false },
     ];
 
-    const meetings = [
-        { profile: tax, user: "tarannom", title: "ggggg", date: "12:00 pm" },
-        { profile: balance, user: "tarannom azimi", title: "We have a meeting in fvfvrf", date: "dec 12:00 pm" },
-        { profile: tax, user: "tarannom", title: "ggggg", date: "12:00 pm" }
-    ];
+     //ACCESS TO REDUX MEETING ITEMS 
+    const MEETINGItems = useSelector((state: any) => state.myArray.meeting);
 
     return (
-        <div className='flex flex-col gap-6 pt-6'>
-            <div className='w-[200px]'>
-                <EmpDropDown type="dashboard" options={employees} />
+        <div className='flex flex-col w-[100%] xl:w-[69%] gap-6 pt-6'>
+          <div className="w-full grid gap-5 grid-cols-2 xl:grid-cols-4 justify-center place-items-center flex-wrap">
+            {smCards.map((sm, index) => <CardSm key={index} data={sm} />)}
+        </div>
+        <div className='w-full flex flex-col xl:flex-row  justify-around flex-wrap'>
+            <div className=' w-[100%] xl:w-[26%] flex xl:flex-col justify-around xl:justify-between xl:h-[302px] xl:gap-5  my-4 xl:my-0'>
+                {mdCards.map((md, index) => <CardMd key={index} data={md} />)}
             </div>
-
-            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-wrap justify-around'>
-                {smCards.map((sm, index) => <CardSm key={index} data={sm} />)}
+            <div className='w-[95%] xl:w-[68%] bg-white rounded-3xl shadow-lg m-auto'>
+                <Chart grid  data={chartdata} />
             </div>
-
-            <div className='w-full flex justify-around'>
-                <div className='flex flex-col gap-5'>
-                    {mdCards.map((md, index) => <CardMd key={index} data={md} />)}
-                </div>
-                <div className='w-[70%] bg-white rounded-3xl shadow-lg'>
-                    <Chart grid data={chartdata} />
-                </div>
-            </div>
-
+        </div>
             <div className='grid gap-3'>
-                <div className='flex justify-between'>
+                <div className='flex justify-between px-3'>
                     <h1 className='text-xl font-bold'>Meeting Time</h1>
                     <Button className='text-base font-bold' color='secondary' variant='bordered' onClick={() => setMeetingModalOpen(true)}>
                         Add Meeting
                     </Button>
                 </div>
                 <div className='w-full h-[332px] overflow-y-auto'>
-                    {meetings.map((meeting, index) => <MettingItems key={index} meeting={meeting} />)}
+                    {initialMeeting.map((meeting, index) => <MettingItems key={index} profile={meeting.profile} title={meeting.title} user={meeting.user} date={meeting.date} />)}
+                    {MEETINGItems.map((meet)=><MettingItems key={meet.id} profile={prof} title={meet.course} user="tarannom azimi" date={meet.date}/>)}
                 </div>
             </div>
             <AddMeeting open={meetingModalOpen} setOpen={setMeetingModalOpen} />
