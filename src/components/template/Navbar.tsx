@@ -37,11 +37,11 @@ export default function Menu() {
   return (
     <div className="absolute top-0 left-0 md:relative z-50 duration-300">
       <div
-        className={`duration-300 ${
-          isMenuOpen ? "w-100px" : "w-90px"
+        className={`transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "w-[200px]" : "w-[90px]"
         } md:bg-purple-700 md:h-screen ${
           hamburgerMenu ? "h-screen bg-purple-700" : "h-[100px] bg-transparent"
-        } pt-7 relative duration-300 text-center`}
+        } pt-7 relative text-center`}
       >
         <div
           className="absolute top-1 left-3 md:hidden duration-400 cursor-pointer"
@@ -71,15 +71,23 @@ export default function Menu() {
             {menuItems.map((menu, index) => (
               <li
                 key={index}
-                className={`flex px-7 py-[3px] my-8 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center ${
-                  menu.gap ? "fixed bottom-0 mt-auto" : ""
-                } ${menu.title === selectedMenu ? "border-l-4 border-white rounded-l-sm" : ""}`}
+                className={`flex px-7 py-[3px] my-8 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center transition-all duration-300 ease-in-out ${
+                  menu.gap ? "mt-auto" : ""
+                } ${
+                  menu.title === selectedMenu
+                    ? "border-l-4 border-white rounded-l-sm"
+                    : ""
+                }`}
                 onClick={() => setSelectedMenu(menu.title)}
               >
                 <img className="w-6 mr-4" src={menu.src} alt={menu.title} />
                 <span
-                  className={`md:${!isMenuOpen ? "hidden" : ""} font-bold text-base text-white origin-left duration-100 ${
-                    menu.title === selectedMenu ? "border-b-4 border-white rounded-b-sm" : ""
+                  className={`transition-all duration-300 ease-in-out ${
+                    !isMenuOpen ? "opacity-0 max-w-0" : "opacity-100 max-w-full"
+                  } font-bold text-base text-white origin-left ${
+                    menu.title === selectedMenu
+                      ? "border-b-4 border-white rounded-b-sm"
+                      : ""
                   }`}
                 >
                   {menu.title}
