@@ -13,7 +13,7 @@ const CardMd: React.FC<CardMdProps> = ({ data }) => {
         </h1>
       </div>
       <div
-        className={`gap-2 w-[70px]flex justify-center items-center  xl: h-[35px] rounded-[40px] !text-[14px] xl:text-lg !px-2 xl:px-0 py-1 ${
+        className={`gap-2 w-[70px] flex justify-center items-center    xl: h-[35px] rounded-[40px] text-xs  xl:text-lg px-2 xl:px-0 py-1 ${
           !data.positive
             ? "bg-red-100 text-red-500"
             : "bg-green-100 text-green-500"
