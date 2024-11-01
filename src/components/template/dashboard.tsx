@@ -52,10 +52,26 @@ const Dashboard = () => {
                         Add Meeting
                     </Button>
                 </div>
-                <div className='w-full h-[332px] overflow-y-auto'>
-                   {MEETINGItems.reverse().map((meet)=><MettingItems key={meet.id} profile={prof} title={meet.course} user={meet.email} date={meet.date}/>)}
-                    {initialMeeting.map((meeting, index) => <MettingItems key={index} profile={meeting.profile} title={meeting.title} user={meeting.user} date={meeting.date} />)}
-                </div>
+                <div className="w-full h-[220px] overflow-y-auto ">
+          {MEETINGItems.reverse().map((meet) => (
+            <MettingItems
+              key={meet.id}
+              profile={prof}
+              title={meet.course}
+              user={meet.email}
+              date={meet.date}
+            />
+          ))}
+          {initialMeeting.map((meeting, index) => (
+            <MettingItems
+              key={index}
+              profile={meeting.profile}
+              title={meeting.title}
+              user={meeting.user}
+              date={meeting.date}
+            />
+          ))}
+        </div>
             </div>
             <AddMeeting open={meetingModalOpen} setOpen={setMeetingModalOpen} />
         </div>
